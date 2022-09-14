@@ -108,9 +108,44 @@ class KasController extends Controller
      * @param  \App\Models\Kas  $kas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kas $kas)
+    public function updateMasuk(Request $request,  $id)
     {
-        //
+        $datasMasuk = Kas::where('id', $id)->firstOrFail();
+
+        $this->validate($request , [
+            'tanggal' => 'required',
+            'uraian' => 'required',
+            'kas' => 'required',
+
+        ]);
+
+        $datasMasuk->tanggal = $request->tanggal;
+        $datasMasuk->uraian = $request->uraian;
+        $datasMasuk->kas = $request->kas;
+
+        $datasMasuk->update();
+
+        return redirect()->back();
+    }
+
+    public function updateKeluar(Request $request,  $id)
+    {
+        $datasKeluar = Kas::where('id', $id)->firstOrFail();
+
+        $this->validate($request , [
+            'tanggal' => 'required',
+            'uraian' => 'required',
+            'kas' => 'required',
+
+        ]);
+
+        $datasKeluar->tanggal = $request->tanggal;
+        $datasKeluar->uraian = $request->uraian;
+        $datasKeluar->kas = $request->kas;
+
+        $datasKeluar->update();
+
+        return redirect()->back();
     }
 
     /**
@@ -119,8 +154,12 @@ class KasController extends Controller
      * @param  \App\Models\Kas  $kas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kas $kas)
+    public function destroy($id)
     {
-        //
+        $datas= Kas::find($id);
+        $datas->delete();
+        
+        return redirect()->back();
+
     }
 }

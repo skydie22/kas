@@ -40,8 +40,9 @@
                             <td>{{ $data->tanggal }}</td>
                             <td>{{ $data->Uraian }}</td>
                             <td>{{ $data->kas }}</td>
-                            <td><a href="#" class="btn btn-success">Edit</a>
-                            <a href="#" class="btn btn-danger">Hapus</a></td>
+                            <td>
+                                <a class="btn shadow btn btn-success" data-bs-toggle="modal" data-bs-target="#edit-pengeluaran{{ $data->id }}">Edit</i></a>
+                                <a class="btn shadow btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus-pengeluaran{{ $data->id }}">delete</i></a>
                            </tr>
                        @endforeach
                     </tbody>
@@ -53,4 +54,6 @@
 </div>
 
 @include('kasKeluar/create')
+@include('kasKeluar/edit')
+@include('kasKeluar/delete')
 @endsection

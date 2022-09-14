@@ -42,8 +42,9 @@
                             <td>{{ $data->tanggal }}</td>
                             <td>{{ $data->uraian }}</td>
                             <td>{{ $data->kas }}</td>
-                            <td> <a href="#" class="btn btn-success">Edit</a> 
-                            <a href="#" class="btn btn-danger">Hapus</a>
+                            <td>
+                                <a class="btn shadow btn btn-success" data-bs-toggle="modal" data-bs-target="#edit-pemasukan{{ $data->id }}">Edit</i></a>
+                                <a class="btn shadow btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus-pemasukan{{ $data->id }}">delete</i></a>
                             </td>
 
                         </tr>
@@ -58,4 +59,6 @@
 </div>
 
 @include('kasMasuk/create')
+@include('kasMasuk/edit')
+@include('kasMasuk/delete')
 @endsection

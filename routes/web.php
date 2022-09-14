@@ -27,10 +27,16 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/kas-pemasukan' , [KasController::class , 'indexMasuk'])->name('kas.pemasukan');
     Route::post('/kas-pemasukan/tambah' , [KasController::class , 'storeMasuk'])->name('tambah.pemasukan');
+    Route::delete('/kas-pemasukan/delete/{id}' , [KasController::class, 'destroy'])->name('hapus.pemasukan');
+    Route::put('/kas-pemasukan/edit/{id}' , [KasController::class, 'updateMasuk']);
     
 
     Route::get('/kas-pengeluaran' , [KasController::class , 'indexKeluar'])->name('kas.pengeluaran');
     Route::post('/kas-pengeluaran' , [KasController::class , 'storeKeluar'])->name('tambah.pengeluaran');
+    Route::delete('/kas-pengeluaran/delete/{id}' , [KasController::class, 'destroy'])->name('hapus.pengeluaran');
+    Route::put('/kas-pengeluaran/edit/{id}' , [KasController::class, 'updateKeluar']);
+
+
 
 });
 
