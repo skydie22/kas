@@ -12,6 +12,8 @@
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
     
 <link rel="stylesheet" href="assets/css/shared/iconly.css">
+<link rel="stylesheet" href="assets/extensions/simple-datatables/style.css">
+<link rel="stylesheet" href="assets/css/pages/simple-datatables.css">
 
 </head>
 
@@ -41,7 +43,7 @@
             
             <li
                 class="sidebar-item active ">
-                <a href="index.html" class='sidebar-link'>
+                <a href="{{ route('home') }}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
                 </a>
@@ -51,14 +53,14 @@
                 class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-stack"></i>
-                    <span>Components</span>
+                    <span>Kas</span>
                 </a>
                 <ul class="submenu ">
                     <li class="submenu-item ">
-                        <a href="#">Alert</a>
+                        <a href="{{ route('kas.pemasukan') }}">Pemasukan</a>
                     </li>
                     <li class="submenu-item ">
-                        <a href="#">Badge</a>
+                        <a href="{{ route('kas.pengeluaran') }}">Pengeluaran</a>
                     </li>
                 </ul>
             </li>    
@@ -87,9 +89,6 @@
                 </a>
             </header>
             
-<div class="page-heading">
-    <h3>Profile Statistics</h3>
-</div>
 <div class="page-content">
     @yield('content')
 </div>
@@ -101,6 +100,9 @@
 <!-- Need: Apexcharts -->
 <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
 <script src="assets/js/pages/dashboard.js"></script>
+<script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+<script src="assets/js/pages/simple-datatables.js"></script>
+
 
 </body>
 
