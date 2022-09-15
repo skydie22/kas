@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KasController;
+use App\Http\Controllers\rekapController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/home' ,[HomeController::class , 'index'])->name('home');
+    Route::get('/rekap', [rekapController::class, 'index'])->name('rekap');
 
     Route::get('/kas-pemasukan' , [KasController::class , 'indexMasuk'])->name('kas.pemasukan');
     Route::post('/kas-pemasukan/tambah' , [KasController::class , 'storeMasuk'])->name('tambah.pemasukan');

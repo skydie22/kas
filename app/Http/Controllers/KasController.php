@@ -12,6 +12,9 @@ class KasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function indexMasuk()
     {
         $datasMasuk = Kas::where('type' , 'MASUK')->get();

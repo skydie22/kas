@@ -42,7 +42,7 @@
             <li class="sidebar-title">Menu</li>
             
             <li
-                class="sidebar-item active ">
+                class="sidebar-item {{ request()->is('home*') ? 'active' : ' ' }} ">
                 <a href="{{ route('home') }}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
@@ -56,15 +56,31 @@
                     <span>Kas</span>
                 </a>
                 <ul class="submenu ">
-                    <li class="submenu-item ">
+                    <li class="submenu-item {{ request()->is('kas-pemasukan*') ? 'active' : ' ' }} ">
                         <a href="{{ route('kas.pemasukan') }}">Pemasukan</a>
                     </li>
-                    <li class="submenu-item ">
+                    <li class="submenu-item {{ request()->is('kas-pengeluaran*') ? 'active' : ' ' }}">
                         <a href="{{ route('kas.pengeluaran') }}">Pengeluaran</a>
                     </li>
                 </ul>
             </li>    
 
+            <li
+            class="sidebar-item">
+            <a href="{{ route('rekap') }}" class='sidebar-link'>
+                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                <span>Rekap</span>
+            </a>
+        </li>
+
+        <li
+        class="sidebar-item">
+        <a href="#" class='sidebar-link'>
+            <i class="bi bi-person-badge-fill"></i>
+            <span>Edit Profile</span>
+        </a>
+    </li>
+         
             <li class="sidebar-item {{ request()->is('logout*') ? 'active' : '' }} ">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();" class="sidebar-link">

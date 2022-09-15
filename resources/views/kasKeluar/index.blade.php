@@ -11,7 +11,7 @@
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active" aria-current="page">KasPengeluaran</li>
                     </ol>
                 </nav>
@@ -21,7 +21,8 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambah-pengeluaran">Tambah Pengeluaran</button>            </div>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambah-pengeluaran">Tambah Pengeluaran</button>            
+            </div>
             <div class="card-body">
                 <table class="table table-striped" id="table1">
                     <thead>
