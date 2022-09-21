@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KasController;
 use App\Http\Controllers\rekapController;
@@ -24,8 +25,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/home' ,[HomeController::class , 'index'])->name('home');
+    Route::get('/home' ,[DashboardController::class , 'index'])->name('home');
     Route::get('/rekap', [rekapController::class, 'index'])->name('rekap');
+    Route::get('/rekap/cetak_pdf', [rekapController::class , 'exportPdf'])->name('export.pdf');
 
     Route::get('/kas-pemasukan' , [KasController::class , 'indexMasuk'])->name('kas.pemasukan');
     Route::post('/kas-pemasukan/tambah' , [KasController::class , 'storeMasuk'])->name('tambah.pemasukan');
@@ -37,6 +39,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/kas-pengeluaran' , [KasController::class , 'storeKeluar'])->name('tambah.pengeluaran');
     Route::delete('/kas-pengeluaran/delete/{id}' , [KasController::class, 'destroy'])->name('hapus.pengeluaran');
     Route::put('/kas-pengeluaran/edit/{id}' , [KasController::class, 'updateKeluar']);
+
 
 
 

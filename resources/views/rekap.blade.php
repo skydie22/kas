@@ -17,13 +17,32 @@
             </div>
         </div>
     </div>
+    
+
+
     <section class="section">
         <div class="card">
 
             <div class="card-body">
 
-                    <a class="btn btn-danger mb-3" href=#" style="color:white"  >
-                    Export To Pdf</a>
+                <div class="col-6 col-md-12">
+                <form action="/report/periode/barang" method="POST">
+                    @csrf
+                    <div class="row mb-4">
+                        <div class="col-12 col-md-4">
+                            <input class="form-control" type="date" name="tgl1">
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <input class="form-control" type="date" name="tgl2">
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <button type="submit" class="btn btn-danger ">Cetak Periode</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+                    <a class="btn btn-danger mb-3" href={{ route('export.pdf') }} style="color:white"  >
+                    Cetak Pdf</a>
     
                 <table class="table table-striped" id="table1">
                     <thead>
@@ -48,12 +67,12 @@
 
                             @if( $rekap->type == 'MASUK' )
 
-                            <td>{{ $rekap->kas }}</td>
+                            <td>@currency($rekap->kas)</td>
                             <td>Pemasukan</td>
 
                             @elseif($rekap->type == 'KELUAR' )
 
-                            <td>{{ $rekap->kas }}</td>
+                            <td>@currency($rekap->kas)</td>
                             <td>Pengeluaran</td>
 
 

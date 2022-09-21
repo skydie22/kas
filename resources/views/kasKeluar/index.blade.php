@@ -40,7 +40,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $data->tanggal }}</td>
                             <td>{{ $data->Uraian }}</td>
-                            <td>{{ $data->kas }}</td>
+                            <td>@currency($data->kas)</td>
                             <td>
                                 <a class="btn shadow btn btn-success" data-bs-toggle="modal" data-bs-target="#edit-pengeluaran{{ $data->id }}">Edit</i></a>
                                 <a class="btn shadow btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus-pengeluaran{{ $data->id }}">delete</i></a>
