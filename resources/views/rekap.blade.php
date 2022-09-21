@@ -26,7 +26,7 @@
             <div class="card-body">
 
                 <div class="col-6 col-md-12">
-                <form action="/report/periode/barang" method="POST">
+                <form action="/rekap/cetak_pdf/periode" method="POST">
                     @csrf
                     <div class="row mb-4">
                         <div class="col-12 col-md-4">

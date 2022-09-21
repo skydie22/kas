@@ -16,59 +16,26 @@
     </style>
 
 
-    <center>
+    {{-- <center>
         @foreach ($data2 as $e)
             <h5>{{ $e->masjid }}</h4>
         @endforeach
         <p>{{ \Carbon\Carbon::parse($tgl1)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($tgl2)->format('d/m/Y') }}
-    </center>
+    </center> --}}
     <hr>
 
     <table class='table table-bordered'>
-        {{-- total keuangan --}}
-        <thead>
-            <tr>
+       
 
-                <th>Total Pemasukan</th>
-                <th>Total Pengeluaran</th>
-                <th>Saldo Akhir</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @php
-                $i = 1;
-                $tot_rek_m = $data[0]->sum('masuk') - $data[0]->sum('keluar');
-            @endphp
-
-            <tr>
-                <td>Rp. @money((float) $data[0]->sum('masuk'))</td>
-                <td>Rp. @money((float) $data[0]->sum('keluar'))</td>
-                @if ($tot_rek_m == 0)
-                    <td>Saldo: kosong
-                    </td>
-                    @elseif ($tot_rek_m <= -1)
-                    <td>Kurang: Rp.@money((float) "$tot_rek_m")
-                    </td>
-                    @else
-                    <td>Saldo: Rp.@money((float) "$tot_rek_m")
-                    </td>
-                @endif
-            </tr>
-
-        </tbody>
-    </table>
-    {{-- TUTUP TOTAL KEUANGAN --}}
-
-    {{-- Data Uraian Masuk Keluat --}}
+    {{-- Data Uraian Masuk Keluar --}}
     <table class='table table-bordered'>
         <thead>
             <tr>
-                <th>ID</th>
+                <th>No</th>
                 <th>Tanggal</th>
                 <th>Uraian</th>
-                <th>Pemasukan</th>
-                <th>Pengeluaran</th>
+                <th>Kas</th>
+                <th>Keterangan</th>
             </tr>
         </thead>
         <tbody>
@@ -78,8 +45,15 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $d->tanggal }}</td>
                     <td>{{ $d->uraian }}</td>
-                    <td>Rp. @money((float) "$d->masuk ? $d->masuk : 0") </td>
-                    <td>Rp. @money((float) "$d->keluar ? $d->keluar : 0")</td>
+                    @if ($d->type == 'MASUK')
+                    <td>@currency($d->kas)</td>
+                    <td>Pemasukan</td>
+                    @elseif($d->type == 'KELUAR')
+                    <td>@currency($d->kas)</td>
+                    <td>Pengeluaran</td>
+                    @endif
+                    {{-- <td>{{ $rekap->type == 'MASUK' ? $rekap->kas : 0 }}</td>
+                <td>{{ $rekap->type == 'KELUAR' ? $rekap->kas : 0 }}</td> --}}
                 </tr>
             @endforeach
         </tbody>
