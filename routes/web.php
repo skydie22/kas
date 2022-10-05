@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KasController;
 use App\Http\Controllers\rekapController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/kas-pengeluaran' , [KasController::class , 'storeKeluar'])->name('tambah.pengeluaran');
     Route::delete('/kas-pengeluaran/delete/{id}' , [KasController::class, 'destroy'])->name('hapus.pengeluaran');
     Route::put('/kas-pengeluaran/edit/{id}' , [KasController::class, 'updateKeluar']);
+
+    Route::get('/manage-bendahara' , [UserController::class , 'index'])->name('manage.bendahara')->middleware('role:admin');
+    Route::post('/bendahara/tambah' , [UserController::class , 'store'])->name('tambah.bendahara')->middleware('role:admin');
+    Route::delete('/hapus-bendahara/{id}' , [UserController::class, 'destroy'])->name('hapus.bendahara')->middleware('role:admin');
 
 
 

@@ -73,6 +73,16 @@
             </a>
         </li>
 
+        @hasrole('admin')
+        <li
+        class="sidebar-item">
+        <a href="{{ route('manage.bendahara') }}" class='sidebar-link'>
+            <i class="bi bi-person-badge-fill"></i>
+            <span>Tambah Bendahara</span>
+        </a>
+    </li>
+    @endhasrole
+
         <li
         class="sidebar-item">
         <a href="#" class='sidebar-link'>
