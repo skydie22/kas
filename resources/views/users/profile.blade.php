@@ -12,9 +12,7 @@
         }
     </style>
     <section class="section">
-      <div class="row">
-        <div class="col col-md-6">
-          <div class="card">
+        <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Edit Profile</h4>
             </div>
@@ -34,7 +32,27 @@
                             </div>
 
 
-                            <div class="form-group col-md-12 mt-2 ">
+                            <div class="form-group col-md-12 mt-4">
+
+                                <label for="image_profile">User Image</label>
+
+                                <fieldset>
+                                    <div class="input-group">
+                                        <div class="input-group mb-3">
+                                            <label class="input-group-text" for="inputGroupFile01"><i
+                                                    class="bi bi-upload"></i></label>
+                                            <input type="file" class="form-control" id="inputGroupFile01"
+                                                value="{{ $data->foto }}" name="foto">
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+
+
+                            </div>
+
+                            <div class="form-group
+                                                col-md-12 mt-2 ">
                                 <label for="email_profile">Email</label>
                                 <input type="email" class="form-control mt-2" id="email" placeholder="Enter email"
                                     name="email" value="{{ $data->email }} "required>
@@ -68,35 +86,6 @@
                 </div>
             </div>
         </div>
-      </div>
-        <div class="col col-md-6">
-
-          <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">User image</h4>
-              </div>
-              <div class="card-body">
-                <div class="form-group col-md-12 mt-4">
-
-                    <fieldset>
-                        <div class="input-group">
-                            <div class="input-group mb-3">
-                                <label class="input-group-text" for="inputGroupFile01"><i
-                                        class="bi bi-upload"></i></label>
-                                <input type="file" class="form-control" id="inputGroupFile01"
-                                    value="{{ $data->foto }}" name="foto">
-                            </div>
-                        </div>
-
-                    </fieldset>
-
-
-                </div>
-              </div>
-          </div>
-      </div>
-      </div>
-       
     </section>
 
 @endsection

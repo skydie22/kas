@@ -43,6 +43,7 @@ class UserController extends Controller
             "name" => 'required|string',
             "email" => 'required|string|email',
             "password" => 'required|max:40',
+            "foto" => "file|max:3072"
         ]);
 
 
@@ -58,9 +59,33 @@ class UserController extends Controller
             $data->email = $request->email;
             $data->password =  Hash::make($request->password);
 
+            $filename = time() .'.jpg';
+            // $data->foto = $filename;
+            if ($request->foto == "") {
+
                 $data->update();
-                return redirect()->back();
+
+                return redirect()->route('users.profile');
+            } else {
+                if ($request->hasFile('foto')) {
+                    // $filename = $request->file('foto')->getClientOriginalName();
+                    $request->file('foto')->storeAs('/galeri', $filename);
+
+                    $data->foto = $filename;
+                    $data->update();
+    
+
+
+                    return redirect()->back();
+                }
+            }
+
+            // Image Logic
+
         }
+
+        return redirect()->back();
+
 
 
     }

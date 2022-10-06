@@ -65,7 +65,14 @@
                 <div class="card-body py-4 px-4">
                     <div class="d-flex align-items-center">
                         <div class="avatar avatar-xl">
+
+                            @if (Auth::user()->foto != '')
+                            
+                            <img src="{{asset('storage/galeri/'.Auth::user()->foto)}}" alt="" srcset="">
+                            @else
                             <img src="assets/images/faces/1.jpg" alt="Face 1">
+
+                            @endif
                         </div>
                         <div class="ms-3 name">
                             <h5 class="font-bold">{{ Auth::user()->name }}</h5>

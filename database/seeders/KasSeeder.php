@@ -18,7 +18,7 @@ class KasSeeder extends Seeder
             Kas::create([
                 "tanggal" => "2022-09-08",
                 "uraian" => "tes" . $i,
-                "kas" => 200 + $i,
+                "kas" => 400 + $i,
                 "type" => "MASUK"
 
             ]);
