@@ -19,7 +19,7 @@ var optionsProfileVisit = {
       data: [9, 20, 30, 20, 10, 20, 30, 20, 10, 20, 30, 20],
     },
   ],
-  colors: "#435ebe",
+  colors: "#9694ff",
   xaxis: {
     categories: [
       "Jan",
@@ -40,7 +40,7 @@ var optionsProfileVisit = {
 let optionsVisitorsProfile = {
   series: [70, 30],
   labels: ["Male", "Female"],
-  colors: ["#435ebe", "#55c6e8"],
+  colors: ["#9694ff", "#55c6e8"],
   chart: {
     type: "donut",
     width: "100%",
@@ -127,7 +127,7 @@ let optionsAmerica = {
 }
 let optionsIndonesia = {
   ...optionsEurope,
-  colors: ["#dc3545"],
+  colors: ["#ff7976"],
 }
 
 var chartProfileVisit = new ApexCharts(

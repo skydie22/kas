@@ -2,6 +2,11 @@
 @section('content')
     
 <section class="section">
+
+    <div class="page-heading">
+        <h3>Tambah Bendahara</h3>
+    </div>
+
   <div class="card">
 
       <div class="card-body">
@@ -29,7 +34,7 @@
                       <td>{{ $data->email }}</td>
                       <td>
                    
-                          <a class="btn shadow btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-user{{ $data->id }}">delete</i></a>
+                          <a class="btn shadow btn-danger" data-bs-toggle="modal" data-bs-target="#delete-user{{ $data->id }}">delete</i></a>
 
                       </td>
                   </tr>

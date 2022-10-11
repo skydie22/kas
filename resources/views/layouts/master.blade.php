@@ -78,7 +78,7 @@
         class="sidebar-item {{ request()->is('manage-bendahara*') ? 'active' : ' ' }}">
         <a href="{{ route('manage.bendahara') }}" class='sidebar-link'>
             <i class="bi bi-person-plus-fill"></i>
-            <span>Tambah Bendahara</span>
+            <span>Bendahara</span>
         </a>
     </li>
     @endhasrole
