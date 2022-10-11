@@ -29,7 +29,7 @@
                       <td>{{ $data->email }}</td>
                       <td>
                    
-                          <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete-user{{ $data->id }}">delete</i></a>
+                          <a class="btn shadow btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-user{{ $data->id }}">delete</i></a>
 
                       </td>
                   </tr>

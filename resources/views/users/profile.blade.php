@@ -55,7 +55,7 @@
                                                 col-md-12 mt-2 ">
                                 <label for="email_profile">Email</label>
                                 <input type="email" class="form-control mt-2" id="email" placeholder="Enter email"
-                                    name="email" value="{{ $data->email }} "required>
+                                    name="email" value="{{ $data->email }} "required readonly>
                             </div>
 
 

@@ -52,7 +52,7 @@
             <li
                 class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
-                    <i class="bi bi-stack"></i>
+                    <i class="bi bi-wallet-fill"></i>
                     <span>Kas</span>
                 </a>
                 <ul class="submenu ">
@@ -66,7 +66,7 @@
             </li>    
 
             <li
-            class="sidebar-item">
+            class="sidebar-item {{ request()->is('rekap*') ? 'active' : ' ' }}">
             <a href="{{ route('rekap') }}" class='sidebar-link'>
                 <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                 <span>Rekap</span>
@@ -75,18 +75,18 @@
 
         @hasrole('admin')
         <li
-        class="sidebar-item">
+        class="sidebar-item {{ request()->is('manage-bendahara*') ? 'active' : ' ' }}">
         <a href="{{ route('manage.bendahara') }}" class='sidebar-link'>
-            <i class="bi bi-person-badge-fill"></i>
+            <i class="bi bi-person-plus-fill"></i>
             <span>Tambah Bendahara</span>
         </a>
     </li>
     @endhasrole
 
         <li
-        class="sidebar-item">
+        class="sidebar-item {{ request()->is('profile*') ? 'active' : ' ' }} ">
         <a href="{{ route('users.profile') }}" class='sidebar-link'>
-            <i class="bi bi-person-badge-fill"></i>
+            <i class="bi bi-person-fill"></i>
             <span>Edit Profile</span>
         </a>
     </li>
@@ -114,7 +114,9 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-            
+  
+
+
 <div class="page-content">
     @yield('content')
 </div>
@@ -129,6 +131,13 @@
 <script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
 <script src="assets/js/pages/simple-datatables.js"></script>
 
+<script>
+const toggler = document.getElementById('toggle-dark');
+if (localStorage.getItem('theme') == 'theme-dark')
+    toggler.checked = true;
+else
+    toggler.checked = false;
+</script>
 
 </body>
 

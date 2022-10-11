@@ -43,8 +43,8 @@
                             <td>{{ $data->uraian }}</td>
                             <td>@currency($data->kas)</td>
                             <td>
-                                <a class="btn shadow btn btn-success" data-bs-toggle="modal" data-bs-target="#edit-pemasukan{{ $data->id }}">Edit</i></a>
-                                <a class="btn shadow btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus-pemasukan{{ $data->id }}">delete</i></a>
+                                <a class="btn shadow btn-outline-success" data-bs-toggle="modal" data-bs-target="#edit-pemasukan{{ $data->id }}">Edit</i></a>
+                                <a class="btn shadow btn-outline-danger" data-bs-toggle="modal" data-bs-target="#hapus-pemasukan{{ $data->id }}">delete</i></a>
                             </td>
 
                         </tr>
