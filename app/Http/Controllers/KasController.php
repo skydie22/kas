@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Kas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session as Session;
+
 
 class KasController extends Controller
 {
@@ -59,7 +61,7 @@ class KasController extends Controller
         $datasMasuk->type = 'MASUK';
 
         $datasMasuk->save();
-
+		Session::flash('sukses','berhasil menambah data');
         return redirect()->back();
     }
     
@@ -78,7 +80,7 @@ class KasController extends Controller
         $datasKeluar->type = 'KELUAR';
 
         $datasKeluar->save();
-
+		Session::flash('sukses','berhasil menambah data');
         return redirect()->back();
     }
 

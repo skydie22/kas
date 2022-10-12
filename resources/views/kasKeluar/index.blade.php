@@ -20,6 +20,12 @@
     </div>
     <section class="section">
         <div class="card">
+            @if ($message = Session::get('sukses'))
+            <div class="alert alert-success alert-block">
+                <strong>{{ $message }}</strong>
+            </div>
+                
+            @endif
             <div class="card-header">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambah-pengeluaran">Tambah Pengeluaran</button>            
             </div>
@@ -57,4 +63,15 @@
 @include('kasKeluar/create')
 @include('kasKeluar/edit')
 @include('kasKeluar/delete')
+
+<script src="assets/js/jquery.min.js" type="text/javascript"></script>
+
+<script>
+
+    $(document).ready(function(){
+          $(".alert").delay(5000).slideUp(300);
+    });
+
+    </script>
+
 @endsection

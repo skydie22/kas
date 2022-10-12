@@ -20,8 +20,16 @@
     </div>
     <section class="section">
         <div class="card">
+            @if ($message = Session::get('sukses'))
+            <div class="alert alert-success alert-block">
+                <strong>{{ $message }}</strong>
+            </div>
+                
+            @endif
             <div class="card-header">
+              
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambah-pemasukan">Tambah Pemasukan</button>
+
             </div>
             <div class="card-body">
                 <table class="table table-striped" id="table1">
@@ -61,4 +69,15 @@
 @include('kasMasuk/create')
 @include('kasMasuk/edit')
 @include('kasMasuk/delete')
+
+<script src="assets/js/jquery.min.js" type="text/javascript"></script>
+
+<script>
+
+    $(document).ready(function(){
+          $(".alert").delay(5000).slideUp(300);
+    });
+
+    </script>
+
 @endsection
