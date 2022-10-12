@@ -13,8 +13,14 @@
     </style>
     <section class="section">
         <div class="card">
+            @if ($message = Session::get('sukses'))
+            <div class="alert alert-success alert-block">
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif
+
             <div class="card-header">
-                <h4 class="card-title">Edit Profile</h4>
+                <h4 class="card-title">Edit Profil</h4>
             </div>
 
             <div class="card-body">
@@ -61,16 +67,16 @@
 
 
                             <div class="form-group col-md-12 mt-4">
-                                <label for="password_old">Enter Old Password</label>
+                                <label for="password_old">Masukkan Password Lama</label>
                                 <input type="password" class="form-control mt-2" id="password_old"
-                                    placeholder="Enter Old Password" name="password_old" value=""
+                                    placeholder="Masukkan Password Lama" name="password_old" value=""
                                     autocomplete="new-password" required>
                             </div>
 
                             <div class="form-group col-md-12 mt-4">
-                                <label for="password_new">Enter New Password</label>
+                                <label for="password_new">Masukkan Password Baru</label>
                                 <input type="password" class="form-control mt-2" id="password_new"
-                                    placeholder="Enter Password" name="password" autocomplete="new-password" required>
+                                    placeholder="Masukkan Password" name="password" autocomplete="new-password" required>
                             </div>
 
 
@@ -88,4 +94,14 @@
         </div>
     </section>
 
+    <script src="assets/js/jquery.min.js" type="text/javascript"></script>
+
+<script>
+
+    $(document).ready(function(){
+          $(".alert").delay(5000).slideUp(300);
+    });
+
+    </script>
+    
 @endsection

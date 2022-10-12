@@ -74,15 +74,31 @@ class KasController extends Controller
         ]);
 
         $datasKeluar = new Kas();
+
+        $KasMasuk = Kas::where('type' , 'MASUK')->sum('kas');
+        $KasKeluar = Kas::where('type', 'KELUAR')->sum('kas');
+        $total = $KasMasuk - $KasKeluar;
+
         $datasKeluar->tanggal = $request->tanggal;
         $datasKeluar->uraian = $request->uraian;
         $datasKeluar->kas = $request->kas;
         $datasKeluar->type = 'KELUAR';
 
-        $datasKeluar->save();
-		Session::flash('sukses','berhasil menambah data');
-        return redirect()->back();
+
+        // $datasKeluar->save();
+		// Session::flash('sukses','berhasil menambah data');
+        // return redirect()->back();
+
+        if ($datasKeluar->kas >= $total) {
+            		Session::flash('gagal','gagal menambah data');
+            return redirect()->back();
+        } else {
+            $datasKeluar->save();
+            		Session::flash('sukses','berhasil menambah data');
+            return redirect()->back();
+            
     }
+}
 
     /**
      * Display the specified resource.
@@ -129,6 +145,7 @@ class KasController extends Controller
         $datasMasuk->kas = $request->kas;
 
         $datasMasuk->update();
+        Session::flash('suksesEdit', 'berhasil mengedit data');
 
         return redirect()->back();
     }
@@ -149,6 +166,7 @@ class KasController extends Controller
         $datasKeluar->kas = $request->kas;
 
         $datasKeluar->update();
+        Session::flash('suksesEdit', 'berhasil mengedit data');
 
         return redirect()->back();
     }
@@ -163,7 +181,8 @@ class KasController extends Controller
     {
         $datas= Kas::find($id);
         $datas->delete();
-        
+        Session::flash('suksesHapus', 'berhasil menghapus data');
+
         return redirect()->back();
 
     }

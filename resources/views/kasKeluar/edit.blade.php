@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Pemasukan Kas Kelas</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Pengeluaran Kas</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
         <form action={{url('/kas-pengeluaran/edit/'. $data->id)}} method="POST" enctype="multipart/form-data">
@@ -17,8 +17,8 @@
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="uraian"  name="uraian" value="{{ $data->uraian }}">
                 </div>
                 <div class="mb-3">
-                    <label for="formGroupExampleInput2" class="form-label">Pemasukan</label> 
-                <input type="number" min ="1" class="form-control" placeholder="nominal" name="kas" autocomplete="off" value="{{ $data->kas }}">
+                    <label for="formGroupExampleInput2" class="form-label">Pengeluaran</label> 
+                <input type="number" min ="1"    class="form-control" placeholder="nominal" name="kas" autocomplete="off" value="{{ $data->kas }}">
             </div>
             <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Tanggal</label>

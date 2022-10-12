@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Mazer Admin Dashboard</title>
     
     <link rel="stylesheet" href="assets/css/main/app.css">
     <link rel="stylesheet" href="assets/css/main/app-dark.css">
@@ -87,7 +86,7 @@
         class="sidebar-item {{ request()->is('profile*') ? 'active' : ' ' }} ">
         <a href="{{ route('users.profile') }}" class='sidebar-link'>
             <i class="bi bi-person-fill"></i>
-            <span>Edit Profile</span>
+            <span>Edit Profil</span>
         </a>
     </li>
          

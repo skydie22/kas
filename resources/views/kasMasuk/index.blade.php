@@ -21,11 +21,23 @@
     <section class="section">
         <div class="card">
             @if ($message = Session::get('sukses'))
-            <div class="alert alert-success alert-block">
+                <div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
+
+            @if ($message = Session::get('suksesEdit'))
+            <div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
                 <strong>{{ $message }}</strong>
             </div>
-                
-            @endif
+        @endif
+
+        @if ($message = Session::get('suksesHapus'))
+        <div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+        
             <div class="card-header">
               
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambah-pemasukan">Tambah Pemasukan</button>
@@ -52,7 +64,7 @@
                             <td>@currency($data->kas)</td>
                             <td>
                                 <a class="btn shadow btn-outline-success" data-bs-toggle="modal" data-bs-target="#edit-pemasukan{{ $data->id }}">Edit</i></a>
-                                <a class="btn shadow btn-outline-danger" data-bs-toggle="modal" data-bs-target="#hapus-pemasukan{{ $data->id }}">delete</i></a>
+                                <a class="btn shadow btn-outline-danger" data-bs-toggle="modal" data-bs-target="#hapus-pemasukan{{ $data->id }}">Hapus</i></a>
                             </td>
 
                         </tr>

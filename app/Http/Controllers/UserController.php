@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session as Session;
+
 
 class UserController extends Controller
 {
@@ -31,6 +33,7 @@ class UserController extends Controller
         $dataUser->assignRole('bendahara');
         $dataUser->save();
 
+        Session::flash('sukses'  , 'berhasil menambah bendahara');
         return redirect()->route('manage.bendahara');
     }
 
@@ -65,6 +68,7 @@ class UserController extends Controller
 
                 $data->update();
 
+                Session::flash('sukses' , 'berhasil mengedit profil');
                 return redirect()->route('users.profile');
             } else {
                 if ($request->hasFile('foto')) {
@@ -73,20 +77,15 @@ class UserController extends Controller
 
                     $data->foto = $filename;
                     $data->update();
-    
-
-
+                    
+                    Session::flash('sukses' , 'berhasil mengedit profil');
                     return redirect()->back();
                 }
             }
-
-            // Image Logic
-
         }
 
+        Session::flash('gagal' , 'gagal mengedit profil');
         return redirect()->back();
-
-
 
     }
 

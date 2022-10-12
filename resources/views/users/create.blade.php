@@ -16,7 +16,7 @@
               </div>
               <div class="mb-3">
                   <label for="formGroupExampleInput2" class="form-label">Email</label> 
-              <input type="email"  class="form-control" placeholder="username@kas.com" name="email" autocomplete="off" required>
+              <input type="email"  class="form-control" placeholder="username@gmail.com" name="email" autocomplete="off" required>
           </div>
           <div class="mb-3">
             <label for="formGroupExampleInput3" class="form-label">Password</label> 
