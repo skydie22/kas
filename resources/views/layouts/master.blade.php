@@ -131,12 +131,14 @@
 <script src="assets/js/pages/simple-datatables.js"></script>
 
 <script>
-const toggler = document.getElementById('toggle-dark');
-if (localStorage.getItem('theme') == 'theme-dark')
-    toggler.checked = true;
-else
-    toggler.checked = false;
+    const toggler = document.getElementById('toggle-dark');
+    if (localStorage.getItem('theme') == 'theme-dark')
+        toggler.checked = true;
+    else
+        toggler.checked = false;
 </script>
+
+@include('sweetalert::alert')
 
 </body>
 

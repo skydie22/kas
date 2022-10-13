@@ -18,32 +18,34 @@
             </div>
         </div>
     </div>
-    <section class="section">
-        <div class="card">
-            @if ($message = Session::get('sukses'))
-                <div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
-                    <strong>{{ $message }}</strong>
-                </div>        
-            @endif
 
-            @if ($message = Session::get('gagal'))
-            <div class="alert alert-danger alert-block"><i class="bi bi-file-excel"></i>
-                <strong>{{ $message }}</strong>
-            </div>        
-        @endif
-
-
-            @if ($message = Session::get('suksesEdit'))
-            <div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
-                <strong>{{ $message }}</strong>
-            </div>        
-        @endif
-
-        @if ($message = Session::get('suksesHapus'))
+    @if ($message = Session::get('sukses'))
         <div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
             <strong>{{ $message }}</strong>
         </div>        
     @endif
+
+    @if ($message = Session::get('gagal'))
+    <div class="alert alert-danger alert-block"><i class="bi bi-file-excel"></i>
+        <strong>{{ $message }}</strong>
+    </div>        
+@endif
+
+
+    @if ($message = Session::get('suksesEdit'))
+    <div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
+        <strong>{{ $message }}</strong>
+    </div>        
+@endif
+
+@if ($message = Session::get('suksesHapus'))
+<div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
+    <strong>{{ $message }}</strong>
+</div>        
+@endif
+
+    <section class="section">
+        <div class="card">
 
             <div class="card-header">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambah-pengeluaran">Tambah Pengeluaran</button>            

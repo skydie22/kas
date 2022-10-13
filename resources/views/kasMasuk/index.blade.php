@@ -18,25 +18,27 @@
             </div>
         </div>
     </div>
-    <section class="section">
-        <div class="card">
-            @if ($message = Session::get('sukses'))
-                <div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
-                    <strong>{{ $message }}</strong>
-                </div>
-            @endif
-
-            @if ($message = Session::get('suksesEdit'))
-            <div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
-                <strong>{{ $message }}</strong>
-            </div>
-        @endif
-
-        @if ($message = Session::get('suksesHapus'))
+    
+    @if ($message = Session::get('sukses'))
         <div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
             <strong>{{ $message }}</strong>
         </div>
     @endif
+
+    @if ($message = Session::get('suksesEdit'))
+    <div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
+        <strong>{{ $message }}</strong>
+    </div>
+@endif
+
+@if ($message = Session::get('suksesHapus'))
+<div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
+    <strong>{{ $message }}</strong>
+</div>
+@endif
+
+    <section class="section">
+        <div class="card">
         
             <div class="card-header">
               

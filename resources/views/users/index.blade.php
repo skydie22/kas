@@ -1,24 +1,25 @@
 @extends('layouts.master')
 @section('content')
     
+<div class="card">
+  @if ($message = Session::get('sukses'))
+  <div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
+      <strong>{{ $message }}</strong>
+  </div>
+@endif
+
+  @if ($message = Session::get('gagal'))<i class="bi bi-file-excel"></i>
+  <div class="alert alert-danger alert-block">
+      <strong>{{ $message }}</strong>
+  </div>
+  @endif
+  
 <section class="section">
 
     <div class="page-heading">
         <h3>Tambah Bendahara</h3>
     </div>
 
-  <div class="card">
-    @if ($message = Session::get('sukses'))<i class="bi bi-check-circle"></i>
-    <div class="alert alert-success alert-block">
-        <strong>{{ $message }}</strong>
-    </div>
-    @endif
-
-    @if ($message = Session::get('gagal'))<i class="bi bi-file-excel"></i>
-    <div class="alert alert-danger alert-block">
-        <strong>{{ $message }}</strong>
-    </div>
-    @endif
     
       <div class="card-body">
           <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambah-user">
