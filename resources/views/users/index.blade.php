@@ -1,6 +1,24 @@
 @extends('layouts.master')
 @section('content')
+
     
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h2>Managemen Bendahara</h2>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ url("home") }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Bendahara</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
 <div class="card">
   @if ($message = Session::get('sukses'))
   <div class="alert alert-success alert-block"><i class="bi bi-check-circle"></i>
@@ -15,11 +33,6 @@
   @endif
   
 <section class="section">
-
-    <div class="page-heading">
-        <h3>Tambah Bendahara</h3>
-    </div>
-
     
       <div class="card-body">
           <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambah-user">
