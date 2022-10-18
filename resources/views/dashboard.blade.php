@@ -85,5 +85,73 @@
             </div>
     
         </div>
+
+        <div class="col-12 col-lg-12 col-md-12">
+            <div class="card">
+
+
+                <div class="card-body px-3 py-4-5">
+                    <canvas id="chart"></canvas>
+
+                </div>
+            </div>
+        </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+            const labels = [
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'Desember'
+            ];
+    
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Pemasukan',
+                    backgroundColor: 'rgb(71, 181, 118)',
+                    borderColor: 'rgb(71, 181, 118)',
+                    data: [
+                        @foreach ($data_pemasukan as $pemasukan)
+                            {{ $pemasukan }},
+                        @endforeach
+                    ],
+                    tension: 0.3
+                }, {
+                    label: 'Pengaluaran',
+                    backgroundColor: 'rgb(255, 121, 118)',
+                    borderColor: 'rgb(255, 121, 118)',
+                    data: [
+                        @foreach ($data_pengeluaran as $pengeluaran)
+                            {{ $pengeluaran }},
+                        @endforeach
+                    ],
+                    tension: 0.3
+                }]
+            };
+    
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {}
+            };
+    
+    
+            const myChart = new Chart(
+                document.getElementById('chart'),
+                config
+            );
+        </script>
+
     </section>
 @endsection
