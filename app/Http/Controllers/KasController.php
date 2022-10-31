@@ -19,15 +19,14 @@ class KasController extends Controller
 
     public function indexMasuk()
     {
-        $datasMasuk = Kas::where('type' , 'MASUK')->get();
-        return view('kasMasuk.index' , compact('datasMasuk'));
+        $datasMasuk = Kas::where('type', 'MASUK')->get();
+        return view('kasMasuk.index', compact('datasMasuk'));
     }
 
     public function indexKeluar()
     {
-        $datasKeluar = Kas::where('type' , 'KELUAR')->get();
-        return view('kasKeluar.index' , compact('datasKeluar'));
-
+        $datasKeluar = Kas::where('type', 'KELUAR')->get();
+        return view('kasKeluar.index', compact('datasKeluar'));
     }
 
     /**
@@ -61,10 +60,10 @@ class KasController extends Controller
         $datasMasuk->type = 'MASUK';
 
         $datasMasuk->save();
-		Session::flash('sukses','berhasil menambah data');
+        Session::flash('sukses', 'berhasil menambah data');
         return redirect()->back();
     }
-    
+
     public function storeKeluar(Request $request)
     {
         $this->validate($request, [
@@ -75,7 +74,7 @@ class KasController extends Controller
 
         $datasKeluar = new Kas();
 
-        $KasMasuk = Kas::where('type' , 'MASUK')->sum('kas');
+        $KasMasuk = Kas::where('type', 'MASUK')->sum('kas');
         $KasKeluar = Kas::where('type', 'KELUAR')->sum('kas');
         $total = $KasMasuk - $KasKeluar;
 
@@ -86,19 +85,18 @@ class KasController extends Controller
 
 
         // $datasKeluar->save();
-		// Session::flash('sukses','berhasil menambah data');
+        // Session::flash('sukses','berhasil menambah data');
         // return redirect()->back();
 
         if ($datasKeluar->kas >= $total) {
-            		Session::flash('gagal','gagal menambah data');
+            Session::flash('gagal', 'gagal menambah data');
             return redirect()->back();
         } else {
             $datasKeluar->save();
-            		Session::flash('sukses','berhasil menambah data');
+            Session::flash('sukses', 'berhasil menambah data');
             return redirect()->back();
-            
+        }
     }
-}
 
     /**
      * Display the specified resource.
@@ -108,7 +106,6 @@ class KasController extends Controller
      */
     public function show(Kas $kas)
     {
-        
     }
 
     /**
@@ -133,7 +130,7 @@ class KasController extends Controller
     {
         $datasMasuk = Kas::where('id', $id)->firstOrFail();
 
-        $this->validate($request , [
+        $this->validate($request, [
             'tanggal' => 'required',
             'uraian' => 'required',
             'kas' => 'required',
@@ -154,21 +151,35 @@ class KasController extends Controller
     {
         $datasKeluar = Kas::where('id', $id)->firstOrFail();
 
-        $this->validate($request , [
+        $this->validate($request, [
             'tanggal' => 'required',
             'uraian' => 'required',
             'kas' => 'required',
 
         ]);
 
+        $KasMasuk = Kas::where('type', 'MASUK')->sum('kas');
+        $KasKeluar = Kas::where('type', 'KELUAR')->sum('kas');
+        $total = $KasMasuk - $KasKeluar;
+
+
         $datasKeluar->tanggal = $request->tanggal;
         $datasKeluar->uraian = $request->uraian;
         $datasKeluar->kas = $request->kas;
 
-        $datasKeluar->update();
-        Session::flash('suksesEdit', 'berhasil mengedit data');
+        // $datasKeluar->update();
+        // Session::flash('suksesEdit', 'berhasil mengedit data');
 
-        return redirect()->back();
+        // return redirect()->back();
+
+        if ($datasKeluar->kas >= $total) {
+            Session::flash('gagal', 'gagal menambah data');
+            return redirect()->back();
+        } else {
+            $datasKeluar->update();
+            Session::flash('sukses', 'berhasil menambah data');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -179,11 +190,10 @@ class KasController extends Controller
      */
     public function destroy($id)
     {
-        $datas= Kas::find($id);
+        $datas = Kas::find($id);
         $datas->delete();
         Session::flash('suksesHapus', 'berhasil menghapus data');
 
         return redirect()->back();
-
     }
 }
