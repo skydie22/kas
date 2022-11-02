@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $chart_pengeluaran = Kas::where('type', 'KELUAR')->where('tanggal' , 'like' , $this_year . '%')->get();
 
         //chart masuk
-        for ($i=0; $i <=12 ; $i++) { 
+        for ($i=1; $i <=12 ; $i++) { 
             $data_pemasukan[(int)$i] = 0;
         }
 
@@ -31,7 +31,7 @@ class DashboardController extends Controller
         }
 
         //chart keluar
-        for ($i=0; $i <=12 ; $i++) { 
+        for ($i=1; $i <=12 ; $i++) { 
             $data_pengeluaran[(int)$i] = 0;
         }
 
@@ -40,6 +40,7 @@ class DashboardController extends Controller
                 $data_pengeluaran[(int)$check] = $pengeluaran->where('type', 'KELUAR')->where('tanggal', $pengeluaran->tanggal)->sum('kas');
         }
         
+        // dd($data_pemasukan);
         return view('dashboard' , compact('datasMasuk', 'datasKeluar', 'kas' , 'data_pemasukan' , 'data_pengeluaran'));
 
     }
