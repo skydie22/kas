@@ -88,11 +88,7 @@
 
     <div class="col-12 col-lg-12 col-md-12">
         <div class="card">
-            <div class="m-3 col-3">
-                <select class="form-select" aria-label="Default select example" id="yearpicker"></select>
-            </div>
-
-
+          
             <div class="card-body px-3 py-4-5">
                 <canvas id="chart"></canvas>
 
@@ -104,13 +100,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        let startYear = 2000;
-        let endYear = new Date().getFullYear();
-            for (i = endYear; i > startYear; i--){
-            $('#yearpicker').append($('<option />').val(i).html(i));
-            }
-    </script>
+
 
     <script>
         const labels = [
