@@ -20,10 +20,13 @@ class rekapController extends Controller
         $datasAll = Kas::all();
         $datasMasuk = Kas::where('type' , 'MASUK')->sum('kas');
         $datasKeluar = Kas::where('type' , 'KELUAR')->sum('kas');
+        $datasSisa = $datasMasuk - $datasKeluar;
+
     	$pdf = PDF::loadview('export-pdf',
         ['datasAll'=>$datasAll , 
          'datasMasuk' => $datasMasuk,
-         'datasKeluar' => $datasKeluar
+         'datasKeluar' => $datasKeluar,
+         'datasSisa' => $datasSisa
     ]);
         return $pdf->download('laporan-kas.pdf');
     }
