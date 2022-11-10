@@ -21,11 +21,11 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password') 
         ]);
 
-        $admin = User::create([
-            'name' => 'smkn10',
-            'email' => 'admin@smkn10jakarta.sch.id',
-            'password' => bcrypt('admin10') 
-        ]);
+        // $admin = User::create([
+        //     'name' => 'smkn10',
+        //     'email' => 'admin@smkn10jakarta.sch.id',
+        //     'password' => bcrypt('admin10') 
+        // ]);
 
         $bendahara = User::create([
             'name' => 'bendahara',

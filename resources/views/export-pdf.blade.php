@@ -17,7 +17,7 @@
 
 
     <center>
-        <h5>Laporan Kas Pdf</h5>
+        <h5>Laporan Kas</h5>
     </center>
 
     {{-- <table class="table table-hover mt-5">
