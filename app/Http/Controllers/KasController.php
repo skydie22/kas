@@ -20,13 +20,27 @@ class KasController extends Controller
     public function indexMasuk()
     {
         $datasMasuk = Kas::where('type', 'MASUK')->get();
-        return view('kasMasuk.index', compact('datasMasuk'));
+        $datasKeluar = Kas::where('type', 'KELUAR')->get();
+
+        $totalMasuk = $datasMasuk->sum('kas');
+        $totalKeluar = $datasKeluar->sum('kas');
+        
+        $totalKas = $totalMasuk - $totalKeluar;
+
+        return view('kasMasuk.index', compact('datasMasuk','totalKas'));
     }
 
     public function indexKeluar()
     {
+        $datasMasuk = Kas::where('type', 'MASUK')->get();
         $datasKeluar = Kas::where('type', 'KELUAR')->get();
-        return view('kasKeluar.index', compact('datasKeluar'));
+
+        $totalMasuk = $datasMasuk->sum('kas');
+        $totalKeluar = $datasKeluar->sum('kas');
+        
+        $totalKas = $totalMasuk - $totalKeluar;
+
+        return view('kasKeluar.index', compact('datasKeluar','totalKas'));
     }
 
     /**

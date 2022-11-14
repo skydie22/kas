@@ -7,6 +7,11 @@
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Pengeluaran</h3>
             
+                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 m-3">
+                    <h6 class="text-muted font-semibold">Sisa Kas</h6>
+                    <h6 class="font-extrabold mb-0">@currency($totalKas)</h6>
+                </div>
+                
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
