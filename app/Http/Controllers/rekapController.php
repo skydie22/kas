@@ -9,13 +9,21 @@ use Illuminate\Http\Request;
 
 class rekapController extends Controller
 {
-   
-    public function index()
+   //rekap
+    public function indexRekap()
     {
         $datas = Kas::all();
         return view('rekap' , compact('datas'));
     }
 
+    //rekap-periode
+    public function indexPeriode()
+    {
+        $datas = Kas::all();
+        return view('rekap-periode' , compact('datas'));
+    }
+
+    //rekap
     public function exportPdf(){
         $datasAll = Kas::all();
         $datasMasuk = Kas::where('type' , 'MASUK')->sum('kas');
@@ -31,6 +39,7 @@ class rekapController extends Controller
         return $pdf->download('laporan-kas.pdf');
     }
 
+    //rekap-periode
     public function cetak_periode_pdf(Request $request)
     {
 

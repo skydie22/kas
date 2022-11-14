@@ -103,7 +103,7 @@ class KasController extends Controller
         // return redirect()->back();
 
         if ($datasKeluar->kas >= $total) {
-            Session::flash('gagal', 'gagal menambah data');
+            Session::flash('gagal', 'gagal menambah data karena pengeluaran tidak boleh melebihi pemasukan');
             return redirect()->back();
         } else {
             $datasKeluar->save();
@@ -187,7 +187,7 @@ class KasController extends Controller
         // return redirect()->back();
 
         if ($datasKeluar->kas >= $total) {
-            Session::flash('gagal', 'gagal menambah data');
+            Session::flash('gagal', 'gagal menambah data karena pengeluaran tidak boleh melebihi pemasukan');
             return redirect()->back();
         } else {
             $datasKeluar->update();

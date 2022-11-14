@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('content')
-
+    
 <div class="page-heading">
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h2>Rekap Kas</h2>
+                <h2>Rekap Periode Kas</h2>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-
+    
 
 
     <section class="section">
@@ -25,9 +25,23 @@
 
             <div class="card-body">
 
-                <a class="btn btn-danger mb-3" href={{ route('export.pdf') }} style="color:white">
-                    Cetak Pdf</a>
-
+                <div class="col-6 col-md-12">
+                <form action="/rekap/cetak_pdf/periode" method="POST">
+                    @csrf
+                    <div class="row mb-4">
+                        <div class="col-12 col-md-4">
+                            <input class="form-control" type="date" name="tgl1">
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <input class="form-control" type="date" name="tgl2">
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <button type="submit" class="btn btn-danger ">Cetak Periode</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
@@ -39,9 +53,9 @@
                         </tr>
                     </thead>
 
-
+                        
                     <tbody>
-                        @foreach ($datas as $rekap)
+                            @foreach ($datas as $rekap) 
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $rekap->tanggal }}</td>
@@ -72,11 +86,9 @@
 
                 </table>
             </div>
-
         </div>
-</div>
 
-</section>
+    </section>
 </div>
 
 @endsection

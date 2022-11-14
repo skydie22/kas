@@ -64,13 +64,29 @@
                 </ul>
             </li>    
 
-            <li
+            {{-- <li
             class="sidebar-item {{ request()->is('rekap*') ? 'active' : ' ' }}">
             <a href="{{ route('rekap') }}" class='sidebar-link'>
                 <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                 <span>Rekap</span>
             </a>
-        </li>
+        </li> --}}
+
+        <li
+        class="sidebar-item  has-sub">
+        <a href="#" class='sidebar-link'>
+            <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+            <span>Rekap</span>
+        </a>
+        <ul class="submenu">
+            <li class="submenu-item {{ request()->is('rekap*') ? 'active' : ' ' }}">
+                <a href="{{ route('rekap') }}">Rekap</a>
+            </li>
+            <li class="submenu-item {{ request()->is('periode-rekap*') ? 'active' : ' ' }} ">
+                <a href="{{ route('rekap.periode') }}">Rekap Periode</a>
+            </li>
+        </ul>
+    </li>   
 
         @hasrole('admin')
         <li

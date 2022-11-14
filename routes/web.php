@@ -27,9 +27,11 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/home' ,[DashboardController::class , 'index'])->name('home');
-    Route::get('/rekap', [rekapController::class, 'index'])->name('rekap');
+    Route::get('/rekap', [rekapController::class, 'indexRekap'])->name('rekap');
+    Route::get('/periode-rekap', [rekapController::class, 'indexPeriode'])->name('rekap.periode');
+
     Route::get('/rekap/cetak_pdf', [rekapController::class , 'exportPdf'])->name('export.pdf');
-    Route::post('/rekap/cetak_pdf/periode', [rekapController::class , 'cetak_periode_pdf'])->name('export.pdf.periode');
+    Route::post('/periode-rekap/cetak_pdf', [rekapController::class , 'cetak_periode_pdf'])->name('export.pdf.periode');
 
 
     Route::get('/kas-pemasukan' , [KasController::class , 'indexMasuk'])->name('kas.pemasukan');
