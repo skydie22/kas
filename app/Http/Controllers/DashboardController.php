@@ -15,33 +15,73 @@ class DashboardController extends Controller
         $datasKeluar = Kas::where('type', 'KELUAR')->sum('kas');
         $kas = $datasMasuk - $datasKeluar;
 
-        //chart
-        $this_year = Carbon::now()->format('Y');
-        $chart_pemasukan = Kas::where('type', 'MASUK')->where('tanggal' , 'like' , $this_year . '%')->get();
-        $chart_pengeluaran = Kas::where('type', 'KELUAR')->where('tanggal' , 'like' , $this_year . '%')->get();
+        $this_m = Carbon::parse('M')->now();
+        $this_month = Carbon::now()->format('Y-m');
+
+        $month_in = Kas::where('type', 'MASUK')->where('tanggal', 'like', $this_month . '%')->get();
+        $month_out = Kas::where('type', 'KELUAR')->where('tanggal', 'like', $this_month . '%')->get();
 
         //chart masuk
-        for ($i=1; $i <=12 ; $i++) { 
+        for ($i=1; $i <= $this_m->daysInMonth ; $i++) { 
             $data_pemasukan[(int)$i] = 0;
         }
 
-           foreach ($chart_pemasukan as $pemasukan) {
-                $check = explode('-', $pemasukan->tanggal)[1];
-                $data_pemasukan[(int)$check] = $pemasukan->where('type', 'MASUK')->where('tanggal', $pemasukan->tanggal)->sum('kas');
+        foreach ($month_in as $p) {
+            $check = explode('-',carbon::parse($p->tanggal)->format('Y-m-d'))[2];
+            $data_pemasukan[(int)$check] = $p->where('type', 'MASUK')->where('tanggal', $p->tanggal)->sum('kas');   
         }
 
         //chart keluar
-        for ($i=1; $i <=12 ; $i++) { 
+        for ($i=1; $i <= $this_m->daysInMonth ; $i++) { 
             $data_pengeluaran[(int)$i] = 0;
         }
 
-           foreach ($chart_pengeluaran as $pengeluaran) {
-                $check = explode('-', $pengeluaran->tanggal)[1];
-                $data_pengeluaran[(int)$check] = $pengeluaran->where('type', 'KELUAR')->where('tanggal', $pengeluaran->tanggal)->sum('kas');
+        foreach ($month_out as $p) {
+            $check = explode('-',carbon::parse($p->tanggal)->format('Y-m-d'))[2];
+            $data_pengeluaran[(int)$check] = $p->where('type', 'KELUAR')->where('tanggal', $p->tanggal)->sum('kas');   
         }
-        
-        // dd($data_pemasukan);
-        return view('dashboard' , compact('datasMasuk', 'datasKeluar', 'kas' , 'data_pemasukan' , 'data_pengeluaran'));
 
+        $label_m = $this_m->daysInMonth;
+
+        return view('dashboard.index' , compact('datasMasuk', 'datasKeluar', 'kas' , 'label_m' , 'data_pemasukan' , 'data_pengeluaran'));
+
+    }
+
+    public function filter(Request $request)
+    {
+        $datasMasuk = Kas::where('type' , 'MASUK')->sum('kas');
+        $datasKeluar = Kas::where('type', 'KELUAR')->sum('kas');
+        $kas = $datasMasuk - $datasKeluar;
+
+        $this_month = Carbon::parse($request->date)->format('Y-m');
+        $month = Carbon::parse($request->date)->format('Y-m-d H:i:s');
+        $result = Carbon::parse($month);
+        
+        $month_p = Kas::where('tanggal' , 'like' , $this_month . '%')->get();
+
+         //chart masuk
+         for ($i=1; $i <= $result->daysInMonth ; $i++) { 
+            $data_pemasukan[(int)$i] = 0;
+        }
+
+        foreach ($month_p as $p) {
+            $check = explode('-',carbon::parse($p->tanggal)->format('Y-m-d'))[2];
+            $data_pemasukan[(int)$check] = $p->where('type', 'MASUK')->where('tanggal', $p->tanggal)->sum('kas');   
+        }
+
+        //chart keluar
+
+        for ($i=1; $i <= $result->daysInMonth ; $i++) { 
+            $data_pengeluaran[(int)$i] = 0;
+        }
+
+        foreach ($month_p as $p) {
+            $check = explode('-',carbon::parse($p->tanggal)->format('Y-m-d'))[2];
+            $data_pengeluaran[(int)$check] = $p->where('type', 'KELUAR')->where('tanggal', $p->tanggal)->sum('kas');   
+        }
+
+        $label_m = $result->daysInMonth;
+
+        return view('dashboard.indexFilltered' , compact('datasMasuk', 'datasKeluar', 'kas' , 'label_m' , 'data_pemasukan' , 'data_pengeluaran'));
     }
 }

@@ -27,6 +27,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/home' ,[DashboardController::class , 'index'])->name('home');
+    Route::post('/home/filltered' , [DashboardController::class , 'filter'])->name('home.fillter');
     Route::get('/rekap', [rekapController::class, 'indexRekap'])->name('rekap');
     Route::get('/periode-rekap', [rekapController::class, 'indexPeriode'])->name('rekap.periode');
 
