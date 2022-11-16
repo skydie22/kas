@@ -138,7 +138,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script>
         const bulan = [
@@ -153,9 +152,9 @@
             labels: bulan,
             datasets: [{
                 label: 'Pemasukan',
-                backgroundColor: '#43beaf',
+                backgroundColor: '#47b576',
                 borderRadius: 4,
-                barThickness: 10,
+                barThickness: 8,
 
                 data: [
                     @foreach ($data_pemasukan as $masuk)
@@ -164,9 +163,9 @@
                 ]
             }, {
                 label: 'Pengeluaran',
-                backgroundColor: '#dc3545',
+                backgroundColor: '#ff7976',
                 borderRadius: 4,
-                barThickness: 10,
+                barThickness: 8,
                 data: [
                     @foreach ($data_pengeluaran as $keluar)
                                     {{ $keluar }},
