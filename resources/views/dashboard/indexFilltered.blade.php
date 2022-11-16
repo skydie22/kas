@@ -151,9 +151,9 @@
             labels: b_products,
             datasets: [{
                 label: 'Pemasukan',
-                backgroundColor: '#43beaf',
+                backgroundColor: '#47b576',
                 borderRadius: 4,
-                barThickness: 10,
+                barThickness: 8,
 
                 data: [
                     @foreach ($data_pemasukan as $masuk)
@@ -162,9 +162,9 @@
                 ]
             }, {
                 label: 'Pengeluaran',
-                backgroundColor: '#dc3545',
+                backgroundColor: '#ff7976',
                 borderRadius: 4,
-                barThickness: 10,
+                barThickness: 8,
                 data: [
                     @foreach ($data_pengeluaran as $keluar)
                                     {{ $keluar }},

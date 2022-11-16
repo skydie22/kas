@@ -52,12 +52,12 @@
                             @if( $rekap->type == 'MASUK' )
 
                             <td>@currency($rekap->kas)</td>
-                            <td><p class="text-success">Pemasukan</p></td>
+                            <td><p style="color: #47b576">Pemasukan</p></td>
 
                             @elseif($rekap->type == 'KELUAR' )
 
                             <td>@currency($rekap->kas)</td>
-                            <td><p class="text-danger">Pengeluaran</p></td>
+                            <td><p style="color:  #ff7976">Pengeluaran</p></td>
 
 
                             @endif
