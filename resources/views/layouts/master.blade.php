@@ -18,6 +18,7 @@
 </head>
 
 <body>
+{{-- @dd($kas) --}}
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -61,6 +62,11 @@
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
+
+                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 m-3">
+                            <h6 class="text-muted font-semibold">Sisa Kas</h6>
+                            <h6 class="font-extrabold mb-0">@currency($kas)</h6>
+                        </div>
 
                         <li class="sidebar-item {{ request()->is('home*') ? 'active' : ' ' }} ">
                             <a href="{{ route('home') }}" class='sidebar-link'>
